@@ -10,8 +10,8 @@ db_config = {"host": "mydatabase.com", "user": "admin", "password": "secret123"}
 
 def get_user_input() -> str:
     """Prompt the user for a name and return it."""
-    user_name = input("Enter your name: ")
-    return user_name
+    entered_name = input("Enter your name: ")
+    return entered_name
 
 
 def send_email(to: str, subject: str, body: str) -> None:
