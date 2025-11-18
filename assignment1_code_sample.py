@@ -1,4 +1,4 @@
-"""Assignment 2 sample script."""
+"""Assignment 2 sample script..."""
 
 import os
 from urllib.request import urlopen
