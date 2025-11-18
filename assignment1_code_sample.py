@@ -1,9 +1,9 @@
-"""Assignment 2 sample script..."""
+"""Assignment 2 sample script."""
 
-import os
-from urllib.request import urlopen
+import subprocess
 
 import pymysql
+import requests
 
 db_config = {"host": "mydatabase.com", "user": "admin", "password": "secret123"}
 
@@ -16,23 +16,24 @@ def get_user_input() -> str:
 
 def send_email(to: str, subject: str, body: str) -> None:
     """Send a simple email using a local mail program."""
-    os.system(f'echo {body} | mail -s "{subject}" {to}')
+    command = ["mail", "-s", subject, to]
+    subprocess.run(command, input=body, text=True, check=True)
 
 
 def get_data() -> str:
     """Fetch text from a demo API and return it."""
-    url = "http://insecure-api.com/get-data"
-    with urlopen(url) as resp:
-        text = resp.read().decode()
-    return text
+    url = "https://secure-api.example.com/get-data"
+    response = requests.get(url, timeout=5)
+    response.raise_for_status()
+    return response.text
 
 
 def save_to_db(text: str) -> None:
     """Insert provided data into the database."""
-    query = f"INSERT INTO mytable (column1, column2) VALUES ('{text}', 'Another Value')"
+    query = "INSERT INTO mytable (column1, column2) VALUES (%s, %s)"
     connection = pymysql.connect(**db_config)  # type: ignore[call-overload]
     cursor = connection.cursor()
-    cursor.execute(query)
+    cursor.execute(query, (text, "Another Value"))
     connection.commit()
     cursor.close()
     connection.close()
