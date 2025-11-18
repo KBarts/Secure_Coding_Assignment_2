@@ -1,9 +1,12 @@
+# isort: skip_file
 """Assignment 2 sample script."""
 
 import os
 from urllib.request import urlopen
 
 import pymysql
+
+
 db_config = {"host": "mydatabase.com", "user": "admin", "password": "secret123"}
 
 
