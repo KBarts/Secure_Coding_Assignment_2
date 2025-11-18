@@ -5,7 +5,6 @@ from urllib.request import urlopen
 
 import pymysql
 
-
 db_config = {"host": "mydatabase.com", "user": "admin", "password": "secret123"}
 
 
