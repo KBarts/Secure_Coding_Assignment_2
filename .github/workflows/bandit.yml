@@ -1,0 +1,19 @@
+name: Bandit Scan
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  bandit:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Run Bandit Scan
+        uses: jpetrucciani/bandit-scan@v1.0.3
+        with:
+          targets: "."
