@@ -44,4 +44,3 @@ if __name__ == "__main__":
     api_data = get_data()
     save_to_db(api_data)
     send_email("admin@example.com", "User Input", user_name)
-
