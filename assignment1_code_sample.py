@@ -5,6 +5,7 @@ from urllib.request import urlopen
 
 import pymysql
 
+
 db_config = {"host": "mydatabase.com", "user": "admin", "password": "secret123"}
 
 
@@ -30,7 +31,7 @@ def get_data() -> str:
 def save_to_db(text: str) -> None:
     """Insert provided data into the database."""
     query = f"INSERT INTO mytable (column1, column2) VALUES ('{text}', 'Another Value')"
-    connection = pymysql.connect(**db_config)
+    connection = pymysql.connect(**db_config)  # type: ignore[call-overload]
     cursor = connection.cursor()
     cursor.execute(query)
     connection.commit()
