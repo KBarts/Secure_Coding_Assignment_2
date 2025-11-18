@@ -1,9 +1,7 @@
 """Assignment 2 sample script."""
 
-import subprocess
-
-import pymysql
 import requests
+import pymysql
 
 db_config = {"host": "mydatabase.com", "user": "admin", "password": "secret123"}
 
@@ -15,9 +13,11 @@ def get_user_input() -> str:
 
 
 def send_email(to: str, subject: str, body: str) -> None:
-    """Send a simple email using a local mail program."""
-    command = ["mail", "-s", subject, to]
-    subprocess.run(command, input=body, text=True, check=True)
+    """Simulate sending an email by printing it."""
+    print(f"To: {to}")
+    print(f"Subject: {subject}")
+    print()
+    print(body)
 
 
 def get_data() -> str:
