@@ -13,7 +13,13 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Run Bandit Scan
-        uses: jpetrucciani/bandit-scan@v1.0.3
+      - name: Set up Python
+        uses: actions/setup-python@v5
         with:
-          targets: "."
+          python-version: '3.x'
+
+      - name: Install Bandit
+        run: pip install bandit
+
+      - name: Run Bandit
+        run: bandit -r .
