@@ -2,9 +2,9 @@ name: Bandit Scan
 
 on:
   push:
-    branches: [ "main" ]
-  pull_request:
-    branches: [ "main" ]
+    paths:
+      - "assignment1_code_sample.py"
+  workflow_dispatch:
 
 permissions:
   contents: read
