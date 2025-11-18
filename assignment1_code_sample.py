@@ -1,7 +1,8 @@
 """Assignment 2 sample script."""
 
-import requests
 import pymysql
+import requests
+
 
 db_config = {"host": "mydatabase.com", "user": "admin", "password": "secret123"}
 
